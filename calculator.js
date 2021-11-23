@@ -2,7 +2,10 @@
 
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var favicon = require('serve-favicon');
 var path = require('path');
