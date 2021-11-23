@@ -12,6 +12,8 @@ var path = require('path');
 
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
+
+//Calculator
 app.get('/', function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
@@ -25,6 +27,21 @@ app.post("/", function(req, res) {
 
     res.send("Calculating... " + result + " 😎");
 });
+
+
+
+// BMI Calculator
+app.get("/bmicalculator", function(req, res) {
+    res.sendFile(__dirname + "/bmiCalculator.html");
+});
+app.post("/bmicalculator", function(req, res) {
+    var weight = Number(req.body.weight);
+    var height = Number(req.body.height);
+
+    var bmi = weight / Math.pow(height, 2);
+    res.send("your BMI is " + bmi + " 😎");
+});
+
 
 app.listen(3000, function() {
     console.log("Server is running on port 3000.");
